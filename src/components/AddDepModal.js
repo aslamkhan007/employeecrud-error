@@ -6,25 +6,24 @@ export class AddDepModal extends React.Component {
     super(props);
   }
   handleSubmit = (event) => {
+    console.log(event.target.DepartmentId.value);
+    console.log(event.target.DepartmentName.value);
     event.preventDefault();
     // alert(event.target.DepartmentId.value);
     fetch("http://13.233.21.154/reactcrudapi/api/Department", {
       method: "post",
       headers: {
         'Accept': "application/json",
-        'ContentType': "application/json",
+        'Content-Type': "application/json",
       },
       body: JSON.stringify({
         DepartmentId: event.target.DepartmentId.value,
         DepartmentName: event.target.DepartmentName.value,
         
-      }),
-     
+      })     
     })
-    
-      .then((res) => res.json())
-     
-      .then((results) => {
+    .then((res) => res.json())     
+    .then((results) => {
         // this.setState({result})
         console.log(results);
         //alert(results);
@@ -60,7 +59,7 @@ export class AddDepModal extends React.Component {
                   </Form.Group>
                   <Form.Group>
                     <Button variant="primary" type="submit">
-                      {" "}
+                      {/* {" "} */}
                       Add Department
                     </Button>
                   </Form.Group>
